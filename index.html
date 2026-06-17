@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jennylynn Balane — Data Analyst & Operations Manager</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #1F3A5F;
+      --navy-dark: #162c4a;
+      --teal: #00A3A3;
+      --teal-light: #e0f5f5;
+      --bg: #F8F9FA;
+      --white: #ffffff;
+      --gray-light: #f0f2f4;
+      --gray-border: #dde3ee;
+      --text-main: #1a2a3a;
+      --text-muted: #5a6a7a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      color: #fff;
+      padding: 60px 32px 50px;
+      text-align: center;
+    }
+    .hero .avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; font-weight: 700; color: #fff;
+      margin-bottom: 18px;
+    }
+    .hero h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.5px; }
+    .hero .title { font-size: 1.05rem; color: #a8c8d8; margin-top: 6px; }
+    .hero .tagline {
+      margin-top: 14px; font-size: 0.97rem; color: #cce0ee;
+      max-width: 620px; margin-left: auto; margin-right: auto;
+    }
+    .hero .badges {
+      margin-top: 20px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    }
+    .badge {
+      background: rgba(0,163,163,0.18);
+      border: 1px solid rgba(0,163,163,0.4);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.82rem; color: #cce8e8;
+    }
+
+    /* MAIN */
+    .container { max-width: 920px; margin: 0 auto; padding: 0 20px 60px; }
+    section { margin-top: 48px; }
+
+    .section-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .section-header .icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .section-header h2 { font-size: 1.25rem; font-weight: 700; color: var(--navy); }
+
+    /* ABOUT */
+    .about-card {
+      background: var(--white); border-radius: 12px; padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(31,58,95,0.08);
+      font-size: 0.97rem; color: #444;
+    }
+    .about-card p + p { margin-top: 12px; }
+
+    /* EXPERIENCE */
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
+    .exp-card {
+      background: var(--white); border-radius: 12px; padding: 22px 26px;
+      box-shadow: 0 2px 12px rgba(31,58,95,0.08);
+      border-left: 4px solid var(--teal);
+    }
+    .exp-card.current { border-left-color: var(--navy); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 6px; }
+    .exp-header h3 { font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .exp-header .period {
+      font-size: 0.82rem; color: #fff;
+      background: var(--teal); border-radius: 20px;
+      padding: 3px 12px; white-space: nowrap;
+    }
+    .exp-card.current .period { background: var(--navy); }
+    .exp-company { font-size: 0.88rem; color: var(--text-muted); margin-top: 3px; margin-bottom: 10px; }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li {
+      font-size: 0.88rem; color: #444; padding: 3px 0 3px 16px;
+      position: relative;
+    }
+    .exp-bullets li::before { content: "▸"; position: absolute; left: 0; color: var(--teal); }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .service-card {
+      background: var(--white); border-radius: 12px; padding: 20px 18px;
+      box-shadow: 0 2px 12px rgba(31,58,95,0.08);
+      border-left: 4px solid var(--teal);
+    }
+    .service-card .s-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .service-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+    .service-card p { font-size: 0.83rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* TOOLS */
+    .tools-section-label {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 10px; margin-top: 22px;
+    }
+    .tools-section-label:first-child { margin-top: 0; }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-chip {
+      background: var(--white); border: 1.5px solid var(--gray-border); border-radius: 8px;
+      padding: 8px 16px; font-size: 0.88rem; font-weight: 600; color: var(--navy);
+      display: flex; align-items: center; gap: 7px;
+      box-shadow: 0 1px 4px rgba(31,58,95,0.06);
+    }
+    .tool-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .tool-chip.ai-tool { border-color: #99d9d9; }
+    .tool-chip.ai-tool .dot { background: var(--teal); }
+
+    /* AI HIGHLIGHT */
+    .ai-highlight {
+      background: var(--teal-light);
+      border: 1.5px solid #99d9d9;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      font-size: 0.92rem;
+      color: #444;
+    }
+    .ai-highlight strong { color: var(--teal); }
+
+    /* EDUCATION */
+    .edu-card {
+      background: var(--white); border-radius: 12px; padding: 22px 26px;
+      box-shadow: 0 2px 12px rgba(31,58,95,0.08);
+      border-left: 4px solid var(--teal);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .edu-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .edu-card p { font-size: 0.88rem; color: var(--text-muted); margin-top: 3px; }
+    .edu-card .year {
+      font-size: 0.82rem; color: #fff; background: var(--teal);
+      border-radius: 20px; padding: 3px 14px; white-space: nowrap;
+    }
+
+    /* CONTACT */
+    .contact-card {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      border-radius: 14px; padding: 32px 28px; color: #fff; text-align: center;
+    }
+    .contact-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .contact-card p { font-size: 0.9rem; color: #a8c8d8; margin-bottom: 22px; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,163,163,0.2);
+      border: 1.5px solid rgba(0,163,163,0.5);
+      color: #fff; text-decoration: none; border-radius: 8px;
+      padding: 10px 22px; font-size: 0.92rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: rgba(0,163,163,0.35); }
+
+    footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="avatar">JB</div>
+    <h1>Jennylynn Balane</h1>
+    <div class="title">Project Operations Manager &nbsp;·&nbsp; Reporting &amp; Analytics &nbsp;·&nbsp; Business Intelligence</div>
+    <p class="tagline">
+      15+ years working with data — building reports, dashboards, and processes that
+      actually get used and help teams make better decisions.
+    </p>
+    <div class="badges">
+      <span class="badge">📊 Power BI</span>
+      <span class="badge">🗄️ SQL</span>
+      <span class="badge">☁️ Azure Databricks</span>
+      <span class="badge">📈 Tableau</span>
+      <span class="badge">📋 Excel (VBA)</span>
+      <span class="badge">🔍 Looker Studio</span>
+      <span class="badge">🤖 AI Tools</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ABOUT -->
+    <section>
+      <div class="section-header">
+        <div class="icon">👤</div>
+        <h2>About Me</h2>
+      </div>
+      <div class="about-card">
+        <p>Hi! I'm Jen — a data analyst and operations manager with over 15 years of experience helping teams get more out of their data. I've worked across reporting, analytics, project management, and workforce operations, mostly in fast-paced, global environments where getting things right quickly matters.</p>
+        <p>I'm comfortable doing the hands-on work — writing SQL, building dashboards, cleaning messy data — and I've also led teams and worked directly with stakeholders to figure out what they actually need (which isn't always what they first ask for).</p>
+        <p>These days I also use AI tools like Claude, ChatGPT, Cursor, and Databricks AI as part of my daily workflow. They help me move faster, spot things I might miss, and spend less time on repetitive tasks.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-header">
+        <div class="icon">💼</div>
+        <h2>Work Experience</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="exp-card current">
+          <div class="exp-header">
+            <h3>Project Operations Manager – Reporting &amp; Optimization</h3>
+            <span class="period">Sep 2025 – Present</span>
+          </div>
+          <div class="exp-company">Appen Services Philippines · Imus City</div>
+          <ul class="exp-bullets">
+            <li>Own reporting and dashboard development for operational teams — from scoping requirements to delivery.</li>
+            <li>Look for manual processes that can be automated and build out the solutions end-to-end.</li>
+            <li>Work closely with teams across the business to make sure reports are actually useful, not just technically correct.</li>
+            <li>Keep an eye on KPIs and flag anything that needs attention before it becomes a bigger problem.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <h3>Senior Data Analyst</h3>
+            <span class="period">Nov 2023 – Sep 2025</span>
+          </div>
+          <div class="exp-company">Satellite Teams · Ortigas, Pasig City</div>
+          <ul class="exp-bullets">
+            <li>Dug into complex datasets to find patterns and trends that helped the team make better calls.</li>
+            <li>Built and maintained dashboards and automated reports using Power BI, Tableau, Looker Studio, and Excel.</li>
+            <li>Pulled and cleaned data from SQL, Mode Analytics, and Azure Databricks.</li>
+            <li>Supported different business teams with analysis when they needed a data perspective.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <h3>Senior Reporting &amp; Analytics Manager</h3>
+            <span class="period">Nov 2020 – Nov 2023</span>
+          </div>
+          <div class="exp-company">Appen Services Philippines · Imus City</div>
+          <ul class="exp-bullets">
+            <li>Led a reporting and analytics team — handled workload planning, quality checks, and making sure things went out on time.</li>
+            <li>Replaced a lot of manual reporting work with automated solutions using Power BI, Tableau, SQL, and Excel.</li>
+            <li>Was the go-to person between the analytics team, internal stakeholders, and external clients.</li>
+            <li>Coached junior analysts and helped the team build their skills over time.</li>
+            <li>Kept data accurate and consistent across all our reporting platforms.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <h3>Project Manager</h3>
+            <span class="period">Nov 2015 – Nov 2020</span>
+          </div>
+          <div class="exp-company">Appen Services Philippines · Imus City</div>
+          <ul class="exp-bullets">
+            <li>Managed end-to-end delivery of data collection and annotation projects for AI training.</li>
+            <li>Coordinated between clients, internal teams, and vendors — kept everyone on the same page.</li>
+            <li>Monitored project quality and flagged issues before they could affect timelines or accuracy.</li>
+            <li>Tracked performance and used post-project reviews to improve how future projects ran.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <h3>Sr. Ops Support Specialist – Workforce Analyst</h3>
+            <span class="period">Mar 2014 – Nov 2015</span>
+          </div>
+          <div class="exp-company">Cash Flow Outsourcing Inc. · Ortigas, Pasig City</div>
+          <ul class="exp-bullets">
+            <li>Used historical call and volume data to forecast staffing needs for the operations team.</li>
+            <li>Monitored real-time queues and adjusted schedules on the fly to meet service levels.</li>
+            <li>Reported on workforce performance and made recommendations to improve scheduling.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <h3>Sr. Specialist – Real-Time Analyst</h3>
+            <span class="period">Jan 2010 – Apr 2014</span>
+          </div>
+          <div class="exp-company">Sutherland Global Services Inc. · Clark Freeport, Pampanga</div>
+          <ul class="exp-bullets">
+            <li>Monitored call volumes and agent activity in real time, making sure the floor was properly staffed.</li>
+            <li>Flagged SLA risks early and worked with team leads to fix them before they escalated.</li>
+            <li>Produced intraday and end-of-day reports on service levels and staffing efficiency.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section>
+      <div class="section-header">
+        <div class="icon">🛠️</div>
+        <h2>What I Can Help With</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="s-icon">📊</div>
+          <h3>Dashboard Building</h3>
+          <p>Power BI, Tableau, or Looker Studio — dashboards that show what actually matters.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">⚙️</div>
+          <h3>Automating Reports</h3>
+          <p>If your team is still doing things manually in spreadsheets, I can likely automate it.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">🔎</div>
+          <h3>Data Analysis</h3>
+          <p>Digging into your data to find what's working, what isn't, and why.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">🗄️</div>
+          <h3>SQL &amp; Data Pulling</h3>
+          <p>Writing queries, cleaning data, and making it ready for analysis or reporting.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">📋</div>
+          <h3>Excel &amp; Sheets Work</h3>
+          <p>Formulas, PivotTables, VBA macros — whatever the spreadsheet needs.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">🚀</div>
+          <h3>Fixing Slow Processes</h3>
+          <p>Finding the steps that slow your team down and building something better.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">🗂️</div>
+          <h3>Project Support</h3>
+          <p>Keeping data and reporting projects organized and moving forward.</p>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">🤖</div>
+          <h3>AI-Assisted Work</h3>
+          <p>Using tools like Claude and ChatGPT to work faster and smarter on your tasks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section>
+      <div class="section-header">
+        <div class="icon">⚡</div>
+        <h2>Tools I Use</h2>
+      </div>
+
+      <div class="ai-highlight">
+        🤖 &nbsp;<strong>I use AI tools daily</strong> — not just to try them out, but as a real part of how I work. They help me move faster, write better queries, and catch things I might otherwise miss.
+      </div>
+
+      <div class="tools-section-label">Analytics &amp; Reporting</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="dot"></span>Power BI</div>
+        <div class="tool-chip"><span class="dot"></span>Tableau</div>
+        <div class="tool-chip"><span class="dot"></span>Looker Studio</div>
+        <div class="tool-chip"><span class="dot"></span>Mode Analytics</div>
+        <div class="tool-chip"><span class="dot"></span>Microsoft Excel (VBA, PivotTables)</div>
+        <div class="tool-chip"><span class="dot"></span>Google Sheets</div>
+      </div>
+
+      <div class="tools-section-label">Data &amp; Databases</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="dot"></span>SQL</div>
+        <div class="tool-chip"><span class="dot"></span>Azure Databricks</div>
+        <div class="tool-chip"><span class="dot"></span>SharePoint</div>
+      </div>
+
+      <div class="tools-section-label">AI Tools</div>
+      <div class="tools-grid">
+        <div class="tool-chip ai-tool"><span class="dot"></span>Claude (Anthropic)</div>
+        <div class="tool-chip ai-tool"><span class="dot"></span>ChatGPT (OpenAI)</div>
+        <div class="tool-chip ai-tool"><span class="dot"></span>Cursor</div>
+        <div class="tool-chip ai-tool"><span class="dot"></span>Databricks AI</div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="section-header">
+        <div class="icon">🎓</div>
+        <h2>Education</h2>
+      </div>
+      <div class="edu-card">
+        <div>
+          <h3>De La Salle – College of St. Benilde</h3>
+          <p>Bachelor of Science in Information Systems</p>
+        </div>
+        <span class="year">2025</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <div class="section-header">
+        <div class="icon">✉️</div>
+        <h2>Get in Touch</h2>
+      </div>
+      <div class="contact-card">
+        <h3>Let's talk!</h3>
+        <p>I'm open to freelance work, short-term projects, and ongoing support. Feel free to reach out — happy to chat about what you need.</p>
+        <div class="contact-links">
+          <a href="mailto:jennylynnbalane@gmail.com" class="contact-btn">✉️ jennylynnbalane@gmail.com</a>
+          <a href="https://www.linkedin.com/in/jen-balane" target="_blank" class="contact-btn">🔗 linkedin.com/in/jen-balane</a>
+          <a href="tel:+639284581469" class="contact-btn">📞 +63 928 458 1469</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>© 2026 Jennylynn Balane · Data Analyst &amp; Operations Manager</footer>
+
+</body>
+</html>
